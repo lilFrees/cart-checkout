@@ -1,0 +1,29 @@
+.cart {
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+	padding-block: 2rem;
+}
+
+.heading {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.title {
+	font-size: 1.8rem;
+	font-weight: 500;
+}
+
+.tagline {
+	font-size: 1.4rem;
+	font-weight: 500;
+	font-family: 'Nunito', sans-serif;
+}
+
+.itemsList {
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+}

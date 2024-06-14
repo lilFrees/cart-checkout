@@ -1,0 +1,163 @@
+.checkout {
+	max-width: 100%;
+	height: 100%;
+	background: #565abb;
+	border-radius: 2rem;
+	padding: 3rem 2rem 2rem;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.title {
+	font-size: 2.2rem;
+	font-weight: 600;
+}
+
+.image {
+	width: 5rem;
+	height: 5rem;
+	border-radius: 0.8rem;
+	overflow: hidden;
+}
+
+.image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.tagline {
+	font-size: 1.6rem;
+	font-family: 'Nunito', sans-serif;
+}
+
+.cardTypes {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.cards {
+	display: flex;
+	gap: 1.7rem;
+}
+
+.card {
+	flex-basis: 25%;
+	height: 5.5rem;
+	border-radius: 0.8rem;
+	background-color: rgba(217, 217, 217, 0.25);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.4rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: 0.2s all;
+	outline: 1px solid transparent;
+}
+
+.card:hover {
+	background-color: rgba(217, 217, 217, 0.3);
+	outline: 1px solid #fff;
+}
+
+.card img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	border-bottom: 1px solid rgba(217, 217, 217, 0.25);
+	padding-bottom: 2.2rem;
+}
+
+.label {
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+	font-size: 1.4rem;
+	font-weight: 500;
+}
+
+.input {
+	outline: none;
+	border: none;
+	background-color: rgba(217, 217, 217, 0.25);
+	font-size: 1.2rem;
+	padding: 1.5rem;
+	border-radius: 0.6rem;
+	color: #fff;
+}
+
+.input::placeholder {
+	color: #c4c4c4;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.2rem;
+}
+
+.details {
+	display: flex;
+	gap: 2rem;
+	width: 100%;
+}
+
+.details .label {
+	flex-basis: 50%;
+}
+
+.summary {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.block {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.value {
+	font-size: 1.4rem;
+	font-weight: 500;
+}
+
+.submit {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #fff;
+	background-color: #4de1c1;
+	border: none;
+	padding: 3rem;
+	border-radius: 1.2rem;
+	font-size: 1.6rem;
+	font-family: inherit;
+	cursor: pointer;
+	transition: 0.2s all;
+}
+
+.submit:hover {
+	background-color: rgb(66, 212, 181);
+}
+
+.submit div {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}

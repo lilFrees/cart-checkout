@@ -1,0 +1,23 @@
+.container {
+	border-bottom: 1.5px solid #d0cfcf;
+}
+
+.link {
+	padding: 2rem;
+	margin-bottom: 1rem;
+	display: flex;
+	border: none;
+	align-items: center;
+	gap: 2rem;
+	font-size: 1.8rem;
+	font-weight: 600;
+	background-color: transparent;
+	cursor: pointer;
+	outline: 0 solid transparent;
+	transition: 0.2s all;
+	border-radius: 10rem;
+}
+
+.link:hover {
+	outline: 1px solid black;
+}
