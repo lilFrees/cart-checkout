@@ -14,7 +14,7 @@ function App() {
 	const [cartItems, setCartItems] = useState<ICartItem[]>([]);
 
 	const [subtotal, setSubtotal] = useState<number>(0);
-	const shipping = 50;
+	const shipping = 4;
 	const taxRate = 0.1;
 	useEffect(() => {
 		const fetchCartItems = async () => {

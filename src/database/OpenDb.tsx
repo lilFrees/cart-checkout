@@ -1,33 +1,34 @@
 import { openDB } from 'idb';
 import { ICartItem } from '../interfaces/ICartItem';
-import item1 from '../assets/item1.jpeg';
-import item2 from '../assets/item2.jpeg';
-import item3 from '../assets/item3.jpeg';
+import { IOrder } from '../interfaces/IOrder';
+import image1 from '../assets/item1.jpeg';
+import image2 from '../assets/item2.jpeg';
+import image3 from '../assets/item3.jpeg';
 
-export const defaultItems: ICartItem[] = [
+const defaultItems: ICartItem[] = [
 	{
 		id: 1,
 		name: 'Italy Pizza',
 		extra: 'Extra cheese and topping',
-		price: 50,
+		price: 12,
 		quantity: 1,
-		image: item1,
+		image: image1,
 	},
 	{
 		id: 2,
 		name: 'Combo Plate',
-		extra: 'Extra cheese and topping',
-		price: 35,
+		extra: 'Extra garlic',
+		price: 5,
 		quantity: 1,
-		image: item2,
+		image: image2,
 	},
 	{
 		id: 3,
 		name: 'Spanish Rice',
 		extra: 'Something else',
-		price: 60,
+		price: 3,
 		quantity: 1,
-		image: item3,
+		image: image3,
 	},
 ];
 
@@ -41,6 +42,9 @@ const dbPromise = openDB('shopping-cart', 1, {
 			defaultItems.forEach((item) => {
 				store.add(item);
 			});
+		}
+		if (!db.objectStoreNames.contains('orders')) {
+			db.createObjectStore('orders', { keyPath: 'id', autoIncrement: true });
 		}
 	},
 });
@@ -56,7 +60,6 @@ export const getCartItems = async (): Promise<ICartItem[]> => {
 };
 
 export const updateCartItem = async (item: ICartItem): Promise<void> => {
-	console.log(item);
 	const db = await dbPromise;
 	await db.put('cart', item);
 };
@@ -64,4 +67,9 @@ export const updateCartItem = async (item: ICartItem): Promise<void> => {
 export const deleteCartItem = async (id: number): Promise<void> => {
 	const db = await dbPromise;
 	await db.delete('cart', id);
+};
+
+export const addOrder = async (order: IOrder): Promise<void> => {
+	const db = await dbPromise;
+	await db.add('orders', order);
 };

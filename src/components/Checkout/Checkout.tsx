@@ -5,6 +5,9 @@ import visa from '../../assets/visa.png';
 import rupay from '../../assets/rupay.png';
 import { FaArrowRight } from 'react-icons/fa';
 import { ICheckout } from '../../interfaces/ICheckout';
+import { addOrder, getCartItems } from '../../database/OpenDb';
+import { useState } from 'react';
+import { IOrder } from '../../interfaces/IOrder';
 
 const paymentTypes = [
 	{ id: 1, image: mastercard, type: 'Mastercard' },
@@ -21,6 +24,28 @@ const paymentTypes = [
 ];
 
 function Checkout({ total, subtotal, shipping }: ICheckout) {
+	const [nameOnCard, setNameOnCard] = useState('');
+	const [cardNumber, setCardNumber] = useState('');
+	const [expirationDate, setExpirationDate] = useState('');
+	const [cvv, setCvv] = useState('');
+
+	const handleCheckout = async () => {
+		const cartItems = await getCartItems();
+
+		const order: IOrder = {
+			cartItems,
+			subtotal,
+			shipping,
+			total,
+			nameOnCard,
+			cardNumber,
+			expirationDate,
+			cvv,
+		};
+
+		await addOrder(order);
+		alert('Order saved successfully!');
+	};
 	return (
 		<div className={style.checkout}>
 			<div className={style.heading}>
@@ -54,6 +79,8 @@ function Checkout({ total, subtotal, shipping }: ICheckout) {
 						id='name'
 						className={style.input}
 						placeholder='Name'
+						value={nameOnCard}
+						onChange={(e) => setNameOnCard(e.target.value)}
 					/>
 				</label>
 				<label htmlFor='card-number' className={style.label}>
@@ -64,6 +91,8 @@ function Checkout({ total, subtotal, shipping }: ICheckout) {
 						id='card-number'
 						className={style.input}
 						placeholder='1111 2222 3333 4444'
+						value={cardNumber}
+						onChange={(e) => setCardNumber(e.target.value)}
 					/>
 				</label>
 				<div className={style.details}>
@@ -75,6 +104,8 @@ function Checkout({ total, subtotal, shipping }: ICheckout) {
 							id='card-number'
 							className={style.input}
 							placeholder='mm/yy'
+							value={expirationDate}
+							onChange={(e) => setExpirationDate(e.target.value)}
 						/>
 					</label>
 					<label htmlFor='card-number' className={style.label}>
@@ -85,6 +116,8 @@ function Checkout({ total, subtotal, shipping }: ICheckout) {
 							id='card-number'
 							className={style.input}
 							placeholder='123'
+							value={cvv}
+							onChange={(e) => setCvv(e.target.value)}
 						/>
 					</label>
 				</div>
@@ -103,8 +136,8 @@ function Checkout({ total, subtotal, shipping }: ICheckout) {
 					<div className={style.value}>$ {total.toFixed(2)}</div>
 				</div>
 			</div>
-			<button type='button' className={style.submit}>
-				<div>$ 1672</div>
+			<button type='button' className={style.submit} onClick={handleCheckout}>
+				<div>${total.toFixed(2)}</div>
 				<div>
 					Checkout <FaArrowRight />
 				</div>
